@@ -17,7 +17,7 @@ public class LoginActivity extends AppCompatActivity implements LoginListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        goToLogin();
+        goToLogin(); //test
     }
 
     private void goToLogin(){
