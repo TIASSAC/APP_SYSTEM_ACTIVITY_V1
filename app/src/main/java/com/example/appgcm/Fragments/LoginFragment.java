@@ -5,15 +5,19 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.button.MaterialButton;
+import android.support.design.widget.TextInputEditText;
+import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.Fragment;
+import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.appgcm.Listeners.LoginListener;
 import com.example.appgcm.R;
-import com.google.android.material.textfield.TextInputEditText;
-import com.google.android.material.textfield.TextInputLayout;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -34,6 +38,8 @@ public class LoginFragment extends Fragment {
     private String mParam2;
 
     private TextInputLayout textInputLayout;
+    private TextInputEditText textInputEditText;
+    private MaterialButton materialButton;
 
     private LoginListener mListener;
 
@@ -45,7 +51,26 @@ public class LoginFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        TextInputLayout textInputCustomEndIcon = getView().findViewById(R.id.custom_end_icon);
+        textInputLayout = getActivity().findViewById(R.id.inputLayout1);
+        textInputEditText = (TextInputEditText) getActivity().findViewById(R.id.editText1);
+        materialButton = (MaterialButton) getActivity().findViewById(R.id.btnTest);
+
+        Log.v("alertta",textInputEditText.getText().toString());
+
+        materialButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(textInputEditText.getText().length() > 4){
+
+                    textInputLayout.setError("Màximo 4 caracteres");
+                }else{
+                    textInputLayout.setError(null);
+                }
+            }
+        });
+
+
+
 
     }
 
