@@ -10,7 +10,6 @@ import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.Fragment;
 import android.util.Log;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,16 +17,15 @@ import android.view.ViewGroup;
 import com.example.appgcm.Listeners.LoginListener;
 import com.example.appgcm.R;
 
-
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link LoginFragment.OnFragmentInteractionListener} interface
+ * {@link ButtonFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link LoginFragment#newInstance} factory method to
+ * Use the {@link ButtonFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class LoginFragment extends Fragment {
+public class ButtonFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -37,21 +35,15 @@ public class LoginFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
+
     private TextInputLayout textInputLayout;
     private TextInputEditText textInputEditText;
     private MaterialButton materialButton;
 
     private LoginListener mListener;
 
-    public LoginFragment() {
+    public ButtonFragment() {
         // Required empty public constructor
-    }
-
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-
-
     }
 
     /**
@@ -60,11 +52,11 @@ public class LoginFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment LoginFragment.
+     * @return A new instance of fragment ButtonFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static LoginFragment newInstance(String param1, String param2) {
-        LoginFragment fragment = new LoginFragment();
+    public static ButtonFragment newInstance(String param1, String param2) {
+        ButtonFragment fragment = new ButtonFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -85,19 +77,38 @@ public class LoginFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_login, container, false);
-
-
-
+        return inflater.inflate(R.layout.fragment_button, container, false);
     }
 
     // TODO: Rename method, update argument and hook method into UI event
 
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+
+        textInputLayout = getActivity().findViewById(R.id.inputLayout1);
+        textInputEditText = (TextInputEditText) getActivity().findViewById(R.id.editText1);
+        materialButton = (MaterialButton) getActivity().findViewById(R.id.btnTest);
+
+        Log.v("alertta",textInputEditText.getText().toString());
+
+        materialButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(textInputEditText.getText().length() > 4){
+
+                    textInputLayout.setError("Màximo 4 caracteres");
+                }else{
+                    textInputLayout.setError(null);
+                }
+            }
+        });
+    }
 
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
-            mListener = (LoginListener) activity;
+        mListener = (LoginListener) activity;
     }
 
     @Override

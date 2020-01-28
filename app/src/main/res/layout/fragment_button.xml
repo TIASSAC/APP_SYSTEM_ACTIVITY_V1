@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="10dp"
+    android:background="@color/md_light_blue_700"
+    tools:context=".Fragments.LoginFragment">
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!-- TODO: Update blank fragment layout -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <android.support.v7.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Material EditText:"
+                android:textSize="20dp"
+                android:textColor="@color/md_black_1000">
+
+            </android.support.v7.widget.AppCompatTextView>
+            <!--1.  EDIT TEXT SIMPLE-->
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/inputLayout1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/hint_text"
+                app:errorEnabled="true"
+
+                app:counterEnabled="true"
+                app:counterMaxLength="20"
+                >
+
+                <android.support.design.widget.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/editText1"
+                    />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <!--2. EDIT TEXT CON COLOR DE FONDO-->
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/inputLayout2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/hint_text"
+                app:boxBackgroundColor="@color/md_blue_50"
+                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
+                >
+
+                <android.support.design.widget.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/editText2"
+                    />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <!--3. EDIT TEXT CON BORDE DELGADO-->
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/inputLayout3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/hint_text"
+                app:boxStrokeColor="@color/md_red_50"
+                app:boxStrokeWidth="10dp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                >
+
+                <android.support.design.widget.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/editText3"
+                    />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <!--4. EDIT TEXT CON BORDE GRUESO-->
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/inputLayout4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/hint_text"
+                app:boxCornerRadiusTopStart="20dp"
+                app:boxCornerRadiusTopEnd="20dp"
+                app:boxCornerRadiusBottomStart="20dp"
+                app:boxCornerRadiusBottomEnd="20dp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                >
+
+                <android.support.design.widget.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/editText5"
+                    />
+
+            </android.support.design.widget.TextInputLayout>
+
+
+            <android.support.design.button.MaterialButton
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/btnTest"
+                android:text="Test">
+
+            </android.support.design.button.MaterialButton>
+        </LinearLayout>
+
+
+
+    </android.support.v4.widget.NestedScrollView>
+
+
+
+</RelativeLayout>
