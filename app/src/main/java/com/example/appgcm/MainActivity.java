@@ -1,5 +1,6 @@
 package com.example.appgcm;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Build;
@@ -10,9 +11,15 @@ import android.util.TypedValue;
 import android.view.Menu;
 import android.widget.FrameLayout;
 
-public class MainActivity extends AppCompatActivity {
+import com.example.appgcm.Fragments.MainFragment;
+import com.example.appgcm.Listeners.MainListener;
+import com.example.appgcm.Util.CustomAnimation;
+import com.example.appgcm.Util.NavigationFragment;
+
+public class MainActivity extends AppCompatActivity implements MainListener {
     Toolbar toolbar;
     SharedPreferences sharedPreferences;
+    private MainFragment mainFragment = new MainFragment();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,6 +35,15 @@ public class MainActivity extends AppCompatActivity {
         //sharedPreferences = getSharedPreferences("VALUES", MODE_PRIVATE);
         //int theme = sharedPreferences.getInt("THEME",1);
         setTheme(R.style.AppTheme2);
+        getSupportActionBar().setTitle("Menú Principal");
+        goToMainFragment();
+
+    }
+
+
+    private void goToMainFragment(){
+        NavigationFragment.addFragment(null, mainFragment, "MainFragment", this,
+                R.id.main_activity_content, false, CustomAnimation.RIGTH_LEFT);
     }
 
     @Override
@@ -80,4 +96,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    @Override
+    public void goToMain2() {
+        Intent intent = new Intent(MainActivity.this, Main2Activity.class);
+        startActivity(intent);
+        this.finish();
+    }
 }
