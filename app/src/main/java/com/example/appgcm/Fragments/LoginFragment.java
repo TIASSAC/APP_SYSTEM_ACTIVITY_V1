@@ -14,9 +14,13 @@ import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.example.appgcm.Listeners.LoginListener;
 import com.example.appgcm.R;
+import com.example.appgcm.Storage.PreferencesHelper;
+
+import java.util.Date;
 
 
 /**
@@ -38,8 +42,9 @@ public class LoginFragment extends Fragment {
     private String mParam2;
 
     private TextInputLayout textInputLayout;
-    private TextInputEditText textInputEditText;
-    private MaterialButton materialButton;
+    private TextInputEditText txtUsuario;
+    private TextInputEditText txtClave;
+    private MaterialButton btnIniciar;
 
     private LoginListener mListener;
 
@@ -50,8 +55,30 @@ public class LoginFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        txtUsuario = (TextInputEditText) getActivity().findViewById(R.id.txtUsuario);
+        txtClave = (TextInputEditText) getActivity().findViewById(R.id.txtPassword);
+        btnIniciar = (MaterialButton) getActivity().findViewById(R.id.btnIniciar);
 
+        btnIniciar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String usuario, clave;
+                usuario = txtUsuario.getText().toString().trim();
+                clave = txtClave.getText().toString().trim();
 
+                if(usuario.toUpperCase().equals("ADMIN") && clave.toUpperCase().equals("ADMIN")){
+                    savePreferences("admin","admin","admin","admin",new Date().toString());
+                    mListener.goToMain();
+                }else{
+                    Toast.makeText(getActivity(),"Credenciales incorrectas", Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+
+    }
+
+    private void savePreferences(String name, String lastname, String user, String pass, String date) {
+        PreferencesHelper.saveSession(getActivity(),user,pass, name,lastname,date);
     }
 
     /**
