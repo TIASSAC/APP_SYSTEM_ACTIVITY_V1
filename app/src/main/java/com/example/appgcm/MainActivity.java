@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.TypedValue;
+import android.view.Menu;
 import android.widget.FrameLayout;
 
 public class MainActivity extends AppCompatActivity {
@@ -22,14 +23,21 @@ public class MainActivity extends AppCompatActivity {
 
         navigationBarStatusBar();
 
-        sharedPreferences.edit().putInt("THEME",1).apply();
+        //sharedPreferences.edit().putInt("THEME",1).apply();
 
-        sharedPreferences = getSharedPreferences("VALUES", MODE_PRIVATE);
-        int theme = sharedPreferences.getInt("THEME",1);
+        //sharedPreferences = getSharedPreferences("VALUES", MODE_PRIVATE);
+        //int theme = sharedPreferences.getInt("THEME",1);
         setTheme(R.style.AppTheme2);
     }
 
-    public void navigationBarStatusBar() {
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+         super.onCreateOptionsMenu(menu);
+        getMenuInflater().inflate(R.menu.main_menu,menu);
+        return  true;
+    }
+
+        public void navigationBarStatusBar() {
 
         // Fix portrait issues
         if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
@@ -70,4 +78,6 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
+
+
 }
