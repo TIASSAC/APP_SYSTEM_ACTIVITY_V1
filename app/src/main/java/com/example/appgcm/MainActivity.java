@@ -30,13 +30,13 @@ public class MainActivity extends AppCompatActivity implements MainListener {
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        navigationBarStatusBar();
+        //navigationBarStatusBar();
 
         //sharedPreferences.edit().putInt("THEME",1).apply();
 
         //sharedPreferences = getSharedPreferences("VALUES", MODE_PRIVATE);
         //int theme = sharedPreferences.getInt("THEME",1);
-        setTheme(R.style.AppTheme2);
+        //setTheme(R.style.AppTheme2);
         getSupportActionBar().setTitle("Menú Principal");
         goToMainFragment();
 
@@ -116,6 +116,6 @@ public class MainActivity extends AppCompatActivity implements MainListener {
     public void goToMain2() {
         Intent intent = new Intent(MainActivity.this, Main2Activity.class);
         startActivity(intent);
-        this.finish();
+        //this.finish();
     }
 }

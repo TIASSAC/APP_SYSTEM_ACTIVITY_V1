@@ -26,10 +26,8 @@ public class Main2Activity extends AppCompatActivity {
 
         //setTheme(R.style.AppTheme3);
         getSupportActionBar().setTitle("Actividad 2");
-        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         //getSupportActionBar().setDisplayShowHomeEnabled(true);
-        getActionBar().setHomeButtonEnabled(true);
-        getActionBar().setDisplayHomeAsUpEnabled(true);
 
         btnIrActivity2 = (MaterialButton) findViewById(R.id.btnIrActividad2);
 
@@ -38,7 +36,7 @@ public class Main2Activity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(Main2Activity.this, Main3Activity.class);
                 startActivity(intent);
-                Main2Activity.this.finish();
+                //Main2Activity.this.finish();
             }
         });
     }
@@ -60,7 +58,8 @@ public class Main2Activity extends AppCompatActivity {
                 Toast.makeText(this,"Salir", Toast.LENGTH_LONG).show();
                 return true;
             case R.id.home:
-                this.finish();
+                Toast.makeText(this,"Home", Toast.LENGTH_LONG).show();
+                Main2Activity.this.finish();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -69,6 +68,6 @@ public class Main2Activity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        //super.onBackPressed();
+        super.onBackPressed();
     }
 }
