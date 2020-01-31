@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Main2Activity">
+    tools:context=".Main3Activity">
 
     <FrameLayout
         android:id="@+id/statusBar"
@@ -23,14 +23,13 @@
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
         app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
 
-    <android.support.design.button.MaterialButton
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Actividad 2"
-        android:id="@+id/btnIrActividad2"
+        android:text="Actividad 3"
         android:layout_centerInParent="true"
         android:gravity="center"
         android:textSize="30dp">
 
-    </android.support.design.button.MaterialButton>
+    </TextView>
 </RelativeLayout>

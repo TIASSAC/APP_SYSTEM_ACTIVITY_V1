@@ -9,7 +9,9 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.TypedValue;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.FrameLayout;
+import android.widget.Toast;
 
 import com.example.appgcm.Fragments.MainFragment;
 import com.example.appgcm.Listeners.MainListener;
@@ -53,7 +55,21 @@ public class MainActivity extends AppCompatActivity implements MainListener {
         return  true;
     }
 
-        public void navigationBarStatusBar() {
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.btnAyuda:
+                Toast.makeText(this,"Ayuda", Toast.LENGTH_LONG).show();
+                return true;
+            case R.id.btnSalir:
+                 Toast.makeText(this,"Salir", Toast.LENGTH_LONG).show();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+    public void navigationBarStatusBar() {
 
         // Fix portrait issues
         if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {

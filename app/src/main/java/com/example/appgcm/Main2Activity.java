@@ -1,13 +1,19 @@
 package com.example.appgcm;
 
+import android.content.Intent;
+import android.support.design.button.MaterialButton;
+import android.support.design.theme.MaterialComponentsViewInflater;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Toast;
 
 public class Main2Activity extends AppCompatActivity {
 
+    MaterialButton btnIrActivity2;
     Toolbar toolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,10 +24,23 @@ public class Main2Activity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
 
-        setTheme(R.style.AppTheme3);
+        //setTheme(R.style.AppTheme3);
         getSupportActionBar().setTitle("Actividad 2");
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        //getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getActionBar().setHomeButtonEnabled(true);
+        getActionBar().setDisplayHomeAsUpEnabled(true);
+
+        btnIrActivity2 = (MaterialButton) findViewById(R.id.btnIrActividad2);
+
+        btnIrActivity2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Main2Activity.this, Main3Activity.class);
+                startActivity(intent);
+                Main2Activity.this.finish();
+            }
+        });
     }
 
     @Override
@@ -33,13 +52,23 @@ public class Main2Activity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        return super.onOptionsItemSelected(item);
-
-
+        switch (item.getItemId()) {
+            case R.id.btnAyuda:
+                Toast.makeText(this,"Ayuda", Toast.LENGTH_LONG).show();
+                return true;
+            case R.id.btnSalir:
+                Toast.makeText(this,"Salir", Toast.LENGTH_LONG).show();
+                return true;
+            case R.id.home:
+                this.finish();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
+        //super.onBackPressed();
     }
 }
