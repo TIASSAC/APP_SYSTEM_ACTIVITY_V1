@@ -1,16 +1,17 @@
 package com.example.appgcm.Fragments;
 
 import android.app.Activity;
-import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.design.button.MaterialButton;
-import android.support.v4.app.Fragment;
+import androidx.annotation.Nullable;
+
+import com.example.appgcm.Util.CustomAnimation;
+import com.example.appgcm.Util.NavigationFragment;
+import com.google.android.material.button.MaterialButton;
+import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 
 import com.example.appgcm.Listeners.MainListener;
 import com.example.appgcm.R;
@@ -35,6 +36,7 @@ public class MainFragment extends Fragment {
 
     private MainListener mListener;
     MaterialButton btnIrActivity2;
+    MaterialButton btnIrFragmento2;
 
     public MainFragment() {
         // Required empty public constructor
@@ -67,6 +69,7 @@ public class MainFragment extends Fragment {
         }
     }
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -79,11 +82,18 @@ public class MainFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
 
         btnIrActivity2 = (MaterialButton) getActivity().findViewById(R.id.btnIrActividad2);
+        btnIrFragmento2 = (MaterialButton) getActivity().findViewById(R.id.btnIrFragmento2);
 
         btnIrActivity2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 mListener.goToMain2();
+            }
+        });
+        btnIrFragmento2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+               mListener.goToButtonFragment();
             }
         });
     }

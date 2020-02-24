@@ -14,7 +14,7 @@
         android:translationZ="4dp" />
 
 
-    <android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+    <androidx.appcompat.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
@@ -23,14 +23,14 @@
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
         app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
 
-    <android.support.design.button.MaterialButton
+    <com.google.android.material.button.MaterialButton
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Actividad 2"
+        android:text="ir a Actividad 3"
         android:id="@+id/btnIrActividad2"
         android:layout_centerInParent="true"
         android:gravity="center"
         android:textSize="30dp">
 
-    </android.support.design.button.MaterialButton>
+    </com.google.android.material.button.MaterialButton>
 </RelativeLayout>

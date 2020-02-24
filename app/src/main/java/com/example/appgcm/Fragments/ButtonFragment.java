@@ -1,14 +1,17 @@
 package com.example.appgcm.Fragments;
 
 import android.app.Activity;
-import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.design.button.MaterialButton;
-import android.support.design.widget.TextInputEditText;
-import android.support.design.widget.TextInputLayout;
-import android.support.v4.app.Fragment;
+import androidx.annotation.Nullable;
+
+import com.example.appgcm.Listeners.MainListener;
+import com.example.appgcm.Util.CustomAnimation;
+import com.example.appgcm.Util.NavigationFragment;
+import com.google.android.material.button.MaterialButton;
+import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
+import androidx.fragment.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -39,8 +42,9 @@ public class ButtonFragment extends Fragment {
     private TextInputLayout textInputLayout;
     private TextInputEditText textInputEditText;
     private MaterialButton materialButton;
+    private MaterialButton btnIrAtras;
 
-    private LoginListener mListener;
+    private MainListener mListener;
 
     public ButtonFragment() {
         // Required empty public constructor
@@ -73,6 +77,7 @@ public class ButtonFragment extends Fragment {
         }
     }
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -89,6 +94,7 @@ public class ButtonFragment extends Fragment {
         textInputLayout = getActivity().findViewById(R.id.inputLayout1);
         textInputEditText = (TextInputEditText) getActivity().findViewById(R.id.editText1);
         materialButton = (MaterialButton) getActivity().findViewById(R.id.btnTest);
+        btnIrAtras = (MaterialButton) getActivity().findViewById(R.id.btnIrAtras);
 
         Log.v("alertta",textInputEditText.getText().toString());
 
@@ -103,12 +109,19 @@ public class ButtonFragment extends Fragment {
                 }
             }
         });
+
+        btnIrAtras.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mListener.goToMainFragment();
+            }
+        });
     }
 
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
-        mListener = (LoginListener) activity;
+        mListener = (MainListener) activity;
     }
 
     @Override
@@ -116,6 +129,8 @@ public class ButtonFragment extends Fragment {
         super.onDetach();
         mListener = null;
     }
+
+
 
     /**
      * This interface must be implemented by activities that contain this

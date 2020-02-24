@@ -1,17 +1,94 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".Fragments.MainFragment">
 
-  <android.support.design.button.MaterialButton
+
+
+  <LinearLayout
       android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:text="Ir a Actividad 2"
-      android:id="@+id/btnIrActividad2"
-      android:layout_gravity="center_vertical">
+      android:layout_height="match_parent"
+      android:orientation="vertical">
 
-  </android.support.design.button.MaterialButton>
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Ir a Actividad 2"
+        android:id="@+id/btnIrActividad2"
+        android:layout_gravity="center_vertical">
 
-</FrameLayout>
+    </com.google.android.material.button.MaterialButton>
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Ir a Fragmento 2"
+        android:id="@+id/btnIrFragmento2"
+        android:layout_gravity="center_vertical">
+
+    </com.google.android.material.button.MaterialButton>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/layoutEd1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Prueba"
+        app:boxStrokeColor="@color/md_red_50"
+        app:boxStrokeWidth="10dp"
+        app:endIconMode="clear_text"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        >
+
+      <com.google.android.material.textfield.TextInputEditText
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:id="@+id/txtEd1"
+          />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/layoutEd2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Prueba"
+        app:boxStrokeColor="@color/md_red_50"
+        app:boxStrokeWidth="10dp"
+        app:endIconMode="password_toggle"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        >
+
+      <com.google.android.material.textfield.TextInputEditText
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:inputType="textPassword"
+          android:id="@+id/txtEd2"
+          />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/layoutEd3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Prueba"
+        app:boxStrokeColor="@color/md_red_50"
+        app:boxStrokeWidth="10dp"
+        app:endIconMode="custom"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        >
+
+      <com.google.android.material.textfield.TextInputEditText
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:inputType="textPassword"
+          android:id="@+id/txtEd3"
+          />
+
+    </com.google.android.material.textfield.TextInputLayout>
+  </LinearLayout>
+
+
+</RelativeLayout>

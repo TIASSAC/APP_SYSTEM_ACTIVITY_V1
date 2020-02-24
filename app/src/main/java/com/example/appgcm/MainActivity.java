@@ -4,15 +4,16 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Build;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
+import androidx.appcompat.widget.Toolbar;
 import android.util.TypedValue;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.FrameLayout;
 import android.widget.Toast;
 
+import com.example.appgcm.Fragments.ButtonFragment;
 import com.example.appgcm.Fragments.MainFragment;
 import com.example.appgcm.Listeners.MainListener;
 import com.example.appgcm.Util.CustomAnimation;
@@ -22,6 +23,7 @@ public class MainActivity extends AppCompatActivity implements MainListener {
     Toolbar toolbar;
     SharedPreferences sharedPreferences;
     private MainFragment mainFragment = new MainFragment();
+    private ButtonFragment buttonFragment = new ButtonFragment();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,9 +44,15 @@ public class MainActivity extends AppCompatActivity implements MainListener {
 
     }
 
-
-    private void goToMainFragment(){
+    @Override
+    public void goToMainFragment(){
         NavigationFragment.addFragment(null, mainFragment, "MainFragment", this,
+                R.id.main_activity_content, false, CustomAnimation.RIGTH_LEFT);
+    }
+
+    @Override
+    public void goToButtonFragment() {
+        NavigationFragment.addFragment(null, buttonFragment, "MainFragment", this,
                 R.id.main_activity_content, false, CustomAnimation.RIGTH_LEFT);
     }
 
@@ -117,5 +125,10 @@ public class MainActivity extends AppCompatActivity implements MainListener {
         Intent intent = new Intent(MainActivity.this, Main2Activity.class);
         startActivity(intent);
         //this.finish();
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
     }
 }
