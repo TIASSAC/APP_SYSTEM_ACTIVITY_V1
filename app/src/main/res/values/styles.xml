@@ -1,6 +1,24 @@
 <resources>
 
-    <style name="AppTheme" parent="Theme.MaterialComponents.NoActionBar">
+    <style name="AppThemeAssac" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <!--colorPrimaty: color para la barra de aplicaciones y otros elementos primarios de la interfaz de usuario-->
+        <item name="colorPrimary"> @color/md_red_800</item>
+        <!--colorPrimayDark: Una variante más oscura del color primario, utilizada para la barra de estado (en Android 5.0+) y las barras contextuales de la aplicación-->
+        <item name="colorPrimaryDark">@color/md_red_900</item>
+        <!--colorAccent: un color secundario para controles como casillas de verificación y campos de texto-->
+        <item name="colorAccent">@color/md_red_500</item>
+<!--        &lt;!&ndash;controla el estado 'normal' de componentes como un EditText no seleccionado y casillas de verificación y botones de radio no seleccionados&ndash;&gt;-->
+<!--        <item name="colorControlNormal">@color/md_blue_800</item>-->
+<!--        &lt;!&ndash;controla el color ondulado&ndash;&gt;-->
+<!--        <item name="colorControlHighlight">@color/md_amber_500</item>-->
+<!--        &lt;!&ndash;Cambia el color al pasar de un radio button a otro / activo /inactivo&ndash;&gt;-->
+<!--        <item name="colorSwitchThumbNormal">@color/md_purple_800</item>-->
+<!--        &lt;!&ndash;Si se quiere que el action bar superponga al Toolbar&ndash;&gt;-->
+<!--        <item name="windowActionModeOverlay">true</item>-->
+<!--        <item name="actionModeBackground">@color/md_amber_500</item>-->
+    </style>
+
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/md_red_500</item>
         <item name="colorPrimaryDark">@color/md_red_700</item>
@@ -11,14 +29,9 @@
         <item name="android:colorForeground">@color/md_black_1000_75</item>
         <item name="windowActionModeOverlay">true</item>
         <item name="actionModeBackground">@color/md_red_500</item>
-
-
-
-
-
     </style>
 
-    <style name="AppTheme2" parent="Theme.MaterialComponents.NoActionBar">
+    <style name="AppTheme2" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/md_blue_500</item>
         <item name="colorPrimaryDark">@color/md_blue_700</item>
@@ -32,7 +45,7 @@
 
     </style>
 
-    <style name="AppTheme3" parent="Theme.MaterialComponents.NoActionBar">
+    <style name="AppTheme3" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/md_green_500</item>
         <item name="colorPrimaryDark">@color/md_green_700</item>
@@ -46,7 +59,7 @@
 
     </style>
 
-    <style name="AppTheme4" parent="Theme.MaterialComponents.NoActionBar">
+    <style name="AppTheme4" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/md_orange_500</item>
         <item name="colorPrimaryDark">@color/md_orange_700</item>
@@ -60,7 +73,7 @@
 
     </style>
 
-    <style name="AppTheme5" parent="Theme.MaterialComponents.NoActionBar">
+    <style name="AppTheme5" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/md_pink_500</item>
         <item name="colorPrimaryDark">@color/md_pink_700</item>
@@ -74,7 +87,7 @@
 
     </style>
 
-    <style name="AppTheme6" parent="Theme.MaterialComponents.NoActionBar">
+    <style name="AppTheme6" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/md_indigo_500</item>
         <item name="colorPrimaryDark">@color/md_indigo_700</item>
@@ -88,7 +101,7 @@
 
     </style>
 
-    <style name="AppTheme7" parent="Theme.MaterialComponents.NoActionBar">
+    <style name="AppTheme7" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/md_brown_500</item>
         <item name="colorPrimaryDark">@color/md_brown_700</item>
@@ -102,7 +115,7 @@
 
     </style>
 
-    <style name="AppTheme8" parent="Theme.MaterialComponents.NoActionBar">
+    <style name="AppTheme8" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/md_blue_grey_500</item>
         <item name="colorPrimaryDark">@color/md_blue_grey_700</item>
@@ -116,7 +129,7 @@
 
     </style>
 
-    <style name="AppTheme9" parent="Theme.MaterialComponents.NoActionBar">
+    <style name="AppTheme9" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/md_falcon_500</item>
         <item name="colorPrimaryDark">@color/md_falcon_700</item>
@@ -130,7 +143,7 @@
 
     </style>
 
-    <style name="AppTheme10" parent="Theme.MaterialComponents.NoActionBar">
+    <style name="AppTheme10" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/md_light_blue_500</item>
         <item name="colorPrimaryDark">@color/md_light_blue_700</item>
@@ -141,6 +154,43 @@
         <item name="android:colorForeground">@color/md_black_1000_75</item>
         <item name="windowActionModeOverlay">true</item>
         <item name="actionModeBackground">@color/md_light_blue_500</item>
+
+    </style>
+
+
+    <!--*** Estilos Propios ***-->
+
+    <!--*** Botón sincronizar en el Login - Dar redondez al material button ***-->
+    <style name="ShapeAppearanceOverlay.MyApp.Button.Circle" parent="Widget.MaterialComponents.Button.Icon">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50dp</item>
+    </style>
+
+    <!--*** Input Layout en el Login ***-->
+    <style name="InputLayout1" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="boxStrokeColor">@color/md_blue_500</item>
+        <item name="boxStrokeWidth">8dp</item>
+        <item name="errorEnabled">true</item>
+        <item name="counterEnabled">true</item>
+        <item name="hintTextColor">@color/md_blue_500</item>
+    </style>
+
+    <!--*** EditText que estan dentro del Input Layout en el Login ***-->
+    <style name="EditText1" parent="Widget.MaterialComponents.TextInputLayout.FilledBox">
+        <item name="android:textSize">30sp</item>
+        <item name="android:lines">1</item>
+    </style>
+
+    <!--*** Estilo para el progress ***-->
+    <style name="AppThemeAssacDialog" parent="Theme.MaterialComponents.Dialog">
+        <item name="colorAccent">@color/md_red_500</item>
+        <item name="android:textColorPrimary">@color/md_grey_500</item>
+        <item name="android:background">@color/md_red_800</item>
+    </style>
+
+    <!--*** Estilo para el AlertDialog ***-->
+    <!--Theme.MaterialComponents.Dialog.Alert: tema oscuro sin radius-->
+    <style name="AppThemeAlertDialog" parent="ThemeOverlay.MaterialComponents.Dialog.Alert">
 
     </style>
 
