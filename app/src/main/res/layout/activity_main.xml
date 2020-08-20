@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/md_white_1000"
     tools:context=".MainActivity">
 
 <!--    <android.support.v4.widget.NestedScrollView-->
@@ -84,13 +83,128 @@
             android:layout_weight="7"
             android:orientation="vertical"
             android:id="@+id/main_activity_content"></LinearLayout>
+
+
+        <!--PIE-->
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:orientation="horizontal">
+            android:layout_height="60dp"
+            android:elevation="10dp"
+            android:orientation="horizontal"
+            android:background="@color/md_black_1000_10"
+            android:layout_alignParentBottom="true"
+            >
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:padding="2dp"
+                android:orientation="vertical">
+                <ImageButton
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="2"
+                    android:background="@null"
+                    android:id="@+id/btnPrincipalMA"
+                    android:src="@drawable/home32">
 
+                </ImageButton>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:text="Principal"
+                    android:textStyle="bold"
+                    android:gravity="center"
+                    android:textSize="10sp"
+                    android:textColor="@color/md_black_1000"></TextView>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:padding="2dp"
+                android:orientation="vertical">
+                <ImageButton
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="2"
+                    android:background="@null"
+                    android:gravity="center"
+                    android:id="@+id/btnLecturasMA"
+                    android:src="@drawable/checklist32">
+
+                </ImageButton>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:text="Registros"
+                    android:textStyle="bold"
+                    android:gravity="center"
+                    android:textSize="10sp"
+                    android:textColor="@color/md_black_1000"></TextView>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="3"
+                android:padding="2dp"
+                android:orientation="vertical">
+                <ImageButton
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="2"
+                    android:background="@null"
+                    android:id="@+id/btnEventosMA"
+                    android:src="@drawable/searchdocument32"
+                    >
+
+                </ImageButton>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="Reporte de Eventos"
+                    android:textColor="@color/md_black_1000"
+                    android:textSize="10sp"
+                    android:textStyle="bold"></TextView>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:padding="2dp"
+                android:orientation="vertical">
+                <ImageButton
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="2"
+                    android:background="@null"
+                    android:id="@+id/btnConfiguracionMA"
+                    android:src="@drawable/settings32"
+                    >
+
+                </ImageButton>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:text="Configuración"
+                    android:textStyle="bold"
+                    android:gravity="center"
+                    android:textSize="10sp"
+                    android:textColor="@color/md_black_1000"></TextView>
+            </LinearLayout>
         </LinearLayout>
+
+
     </LinearLayout>
 
 </LinearLayout>

@@ -3,92 +3,209 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="10dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".Fragments.MainFragment">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/scroll"
+        android:layout_above="@id/general">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:id="@+id/ly1FM"
+                android:background="@color/md_black_1000_15"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:visibility="gone">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="15sp"
+                    android:textStyle="italic|bold"
+                    android:text="Última Sincronización: "></TextView>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="15sp"
+                    android:textStyle="italic|bold"
+                    android:text="-"
+                    android:id="@+id/txtUltimaMigracionMainFragment"></TextView>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/ly1FM"
+                android:id="@+id/ly2FM"
+                android:orientation="vertical"
+                android:layout_marginTop="5dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:gravity="center">
+                        <ImageView
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
+                            android:id="@+id/btnAdjuntarMainFragment"
+                            android:src="@drawable/clip64">
+                        </ImageView>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="14sp"
+                            android:text="Adjunto"></TextView>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_weight="5"
+                        android:padding="5dp"
+                        android:background="@drawable/bg_for_textview"
+                        android:gravity="center"
+                        android:layout_height="match_parent">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/txtNombreFechaMainFragment"
+                            android:textSize="20sp"
+                            android:gravity="center_horizontal">
+
+                        </TextView>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:id="@+id/txtFechaMainFragment"
+                            android:textSize="20sp"
+                            android:gravity="center_horizontal"
+                            android:layout_height="wrap_content">
+
+                        </TextView>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:gravity="center">
+                        <ImageView
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
+                            android:id="@+id/btnFechaMainFragment"
+                            android:src="@drawable/calendar64">
+                        </ImageView>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="15sp"
+                            android:text="Fecha"></TextView>
+                    </LinearLayout>
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_below="@+id/ly2FM"
+                android:id="@+id/ly3FM"
+                android:background="@drawable/bg_for_textview"
+                android:layout_marginTop="10dp"
+                android:padding="10dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="25sp"
+                    android:text="Actividades:"
+                    android:visibility="gone"></TextView>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="25sp"
+                    android:id="@+id/txtMensajeSinDatosMainFragment"
+                    android:text="No existen datos a mostrar"></TextView>
+                <view class="androidx.recyclerview.widget.RecyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/rvListaActividadesMainFragment"
+                    android:scrollbars="vertical">
+                </view>
+            </LinearLayout>
 
 
 
-  <LinearLayout
-      android:layout_width="match_parent"
-      android:layout_height="match_parent"
-      android:orientation="vertical">
+        </RelativeLayout>
+    </ScrollView>
 
-    <com.google.android.material.button.MaterialButton
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Ir a Actividad 2"
-        android:id="@+id/btnIrActividad2"
-        android:layout_gravity="center_vertical">
+        android:orientation="vertical"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="3dp"
+        android:id="@+id/general">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:id="@+id/ly4FM"
+            android:layout_marginTop="7dp">
 
-    </com.google.android.material.button.MaterialButton>
-    <com.google.android.material.button.MaterialButton
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Ir a Fragmento 2"
-        android:id="@+id/btnIrFragmento2"
-        android:layout_gravity="center_vertical">
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/LayoutComentariosMainFragment"
+                style="@style/InputLayout1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="Comentarios"
+                app:counterEnabled="true"
+                app:counterMaxLength="150">
 
-    </com.google.android.material.button.MaterialButton>
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txtComentariosMainFragment"
+                    style="@style/EditText1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:lines="4"
+                    />
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/layoutEd1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Prueba"
-        app:boxStrokeColor="@color/md_red_50"
-        app:boxStrokeWidth="10dp"
-        app:endIconMode="clear_text"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        >
+            </com.google.android.material.textfield.TextInputLayout>
+        </LinearLayout>
 
-      <com.google.android.material.textfield.TextInputEditText
-          android:layout_width="match_parent"
-          android:layout_height="match_parent"
-          android:id="@+id/txtEd1"
-          />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:id="@+id/ly5FM"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:gravity="center">
 
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/layoutEd2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Prueba"
-        app:boxStrokeColor="@color/md_red_50"
-        app:boxStrokeWidth="10dp"
-        app:endIconMode="password_toggle"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        >
-
-      <com.google.android.material.textfield.TextInputEditText
-          android:layout_width="match_parent"
-          android:layout_height="match_parent"
-          android:inputType="textPassword"
-          android:id="@+id/txtEd2"
-          />
-
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/layoutEd3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Prueba"
-        app:boxStrokeColor="@color/md_red_50"
-        app:boxStrokeWidth="10dp"
-        app:endIconMode="custom"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        >
-
-      <com.google.android.material.textfield.TextInputEditText
-          android:layout_width="match_parent"
-          android:layout_height="match_parent"
-          android:inputType="textPassword"
-          android:id="@+id/txtEd3"
-          />
-
-    </com.google.android.material.textfield.TextInputLayout>
-  </LinearLayout>
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnGenerarRegistroActividadMainFragment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="2dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="0dp"
+                android:textSize="25sp"
+                android:text="Guardar"></com.google.android.material.button.MaterialButton>
+        </LinearLayout>
+    </LinearLayout>
 
 
 </RelativeLayout>

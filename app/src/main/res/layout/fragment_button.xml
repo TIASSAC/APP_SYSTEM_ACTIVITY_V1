@@ -5,7 +5,6 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:padding="10dp"
-    android:background="@color/md_light_blue_700"
     tools:context=".Fragments.LoginFragment">
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -69,7 +68,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/hint_text"
-                app:boxStrokeColor="@color/md_red_50"
+
                 app:boxStrokeWidth="10dp"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 >

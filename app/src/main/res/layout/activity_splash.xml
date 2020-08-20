@@ -10,7 +10,7 @@
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/logo"
+        android:src="@drawable/logoassac"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true" />
 
@@ -19,6 +19,7 @@
         android:layout_height="wrap_content"
         android:text="Created by ASSAC S.A.C."
         android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"/>
+        android:layout_alignParentRight="true"
+        android:textColor="@color/md_black_1000"/>
 
 </RelativeLayout>
