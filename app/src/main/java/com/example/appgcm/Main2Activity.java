@@ -51,9 +51,9 @@ public class Main2Activity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.btnAyuda:
-                Toast.makeText(this,"Ayuda", Toast.LENGTH_LONG).show();
-                return true;
+//            case R.id.btnAyuda:
+//                Toast.makeText(this,"Ayuda", Toast.LENGTH_LONG).show();
+//                return true;
             case R.id.btnSalir:
                 Toast.makeText(this,"Salir", Toast.LENGTH_LONG).show();
                 return true;

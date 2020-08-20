@@ -2,28 +2,62 @@ package com.example.appgcm;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.res.Configuration;
-import android.os.Build;
+
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import androidx.appcompat.widget.Toolbar;
-import android.util.TypedValue;
+
+import android.os.Handler;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.FrameLayout;
-import android.widget.Toast;
+import android.view.View;
+import android.widget.ImageButton;
 
+import com.example.appgcm.Entities.ConfigurationEntity;
+import com.example.appgcm.Fragments.ActivedPersonListFragment;
 import com.example.appgcm.Fragments.ButtonFragment;
+import com.example.appgcm.Fragments.ConfigurationFragment;
 import com.example.appgcm.Fragments.MainFragment;
+import com.example.appgcm.Fragments.PersonListFragment;
+import com.example.appgcm.Fragments.EventFragment;
 import com.example.appgcm.Listeners.MainListener;
+import com.example.appgcm.Storage.DB.CRUDOperations;
+import com.example.appgcm.Storage.DB.MyDatabase;
 import com.example.appgcm.Util.CustomAnimation;
+import com.example.appgcm.Util.CustomProgressDialog;
+import com.example.appgcm.Util.Internet.ValidateConn;
 import com.example.appgcm.Util.NavigationFragment;
+import com.example.appgcm.Storage.PreferencesHelper;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements MainListener {
     Toolbar toolbar;
     SharedPreferences sharedPreferences;
     private MainFragment mainFragment = new MainFragment();
     private ButtonFragment buttonFragment = new ButtonFragment();
+    private ActivedPersonListFragment activedPersonListFragment = new ActivedPersonListFragment();
+    private PersonListFragment personListFragment = new PersonListFragment();
+
+    //ADDITIONAL CODE
+    private ImageButton btnPrincipalMA;
+    private ImageButton btnEventosMA;
+    private ImageButton btnLecturasMA;
+    private ImageButton btnConfiguracionMA;
+    Thread thread;
+
+    private Handler handler = new Handler();
+    public static final String TAG = "NfcTag";
+    public static final String MIME_TEXT_PLAIN = "text/plain";
+
+    CustomProgressDialog customProgressDialog = new CustomProgressDialog(MainActivity.this);
+
+
+    private EventFragment eventFragment = new EventFragment();
+    private ConfigurationFragment configurationFragment = new ConfigurationFragment();
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,29 +66,144 @@ public class MainActivity extends AppCompatActivity implements MainListener {
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        //navigationBarStatusBar();
+        btnPrincipalMA = (ImageButton)findViewById(R.id.btnPrincipalMA);
+        btnEventosMA = (ImageButton)findViewById(R.id.btnEventosMA);
+        btnLecturasMA = (ImageButton)findViewById(R.id.btnLecturasMA);
+        btnConfiguracionMA = (ImageButton)findViewById(R.id.btnConfiguracionMA);
 
-        //sharedPreferences.edit().putInt("THEME",1).apply();
-
-        //sharedPreferences = getSharedPreferences("VALUES", MODE_PRIVATE);
-        //int theme = sharedPreferences.getInt("THEME",1);
-        //setTheme(R.style.AppTheme2);
         getSupportActionBar().setTitle("Menú Principal");
+        activateMigrationData();
         goToMainFragment();
 
+        btnPrincipalMA.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                goToMainFragment();
+            }
+        });
+
+        btnEventosMA.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                goToEventFragment();
+            }
+        });
+
+        btnLecturasMA.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) { goToActivedPersonListFragment();
+            }
+        });
+
+
+        btnConfiguracionMA.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) { goToConfigurationFragment();
+            }
+        });
+
+
     }
+
+    private void activateMigrationData(){
+        final CRUDOperations crudOperations = new CRUDOperations(new MyDatabase(MainActivity.this));
+        thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while(true){
+                    try{
+                        int migrationLapse = 15000;
+                        List<ConfigurationEntity> lst = new ArrayList<ConfigurationEntity>();
+                        lst = crudOperations.getAllConfiguration();
+                        if(lst.size()>0){
+                            migrationLapse = lst.get(0).getMigrationLapse() * 1000;
+                        }
+                        Thread.sleep(migrationLapse);
+
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
+                    handler.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            ValidateConn validateConn = new ValidateConn(MainActivity.this,"2");
+                            validateConn.mstartConn();
+                        }
+                    });
+                }
+            }
+        });
+        thread.start();
+
+
+    }
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+
+    }
+
+
+    @Override
+    public void showProgressDialog() {
+        customProgressDialog.showProgressDialog();
+    }
+
+    @Override
+    public void dismissProgressDialog() {
+        customProgressDialog.dismissProgressDialog();
+    }
+
+    @Override
+    public void updateActionBar(String texto) {
+        getSupportActionBar().setTitle(texto);
+    }
+
 
     @Override
     public void goToMainFragment(){
         NavigationFragment.addFragment(null, mainFragment, "MainFragment", this,
-                R.id.main_activity_content, false, CustomAnimation.RIGTH_LEFT);
+                R.id.main_activity_content, false, CustomAnimation.LEFT_RIGHT);
     }
 
     @Override
     public void goToButtonFragment() {
         NavigationFragment.addFragment(null, buttonFragment, "MainFragment", this,
-                R.id.main_activity_content, false, CustomAnimation.RIGTH_LEFT);
+                R.id.main_activity_content, false, CustomAnimation.LEFT_RIGHT);
     }
+
+    public void goToEventFragment(){
+        NavigationFragment.addFragment(null, eventFragment, "ReadingGroupFragment", this,
+                R.id.main_activity_content, false, CustomAnimation.LEFT_RIGHT);
+
+    }
+
+    public void goToPersonListFragment(){
+        NavigationFragment.addFragment(null, personListFragment, "personListFragment", this,
+                R.id.main_activity_content, false, CustomAnimation.LEFT_RIGHT);
+
+    }
+
+    public void goToActivedPersonListFragment(){
+        NavigationFragment.addFragment(null, activedPersonListFragment, "activedPersonListFragment", this,
+                R.id.main_activity_content, false, CustomAnimation.LEFT_RIGHT);
+
+    }
+
+    public void goToConfigurationFragment(){
+        NavigationFragment.addFragment(null, configurationFragment, "ConfigurationFragment", this,
+                R.id.main_activity_content, false, CustomAnimation.LEFT_RIGHT);
+
+    }
+
+    @Override
+    public void CloseSession() {
+        Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+        startActivity(intent);
+        PreferencesHelper.signOut(getApplication());
+        this.finish();
+    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -66,66 +215,19 @@ public class MainActivity extends AppCompatActivity implements MainListener {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.btnAyuda:
-                Toast.makeText(this,"Ayuda", Toast.LENGTH_LONG).show();
-                return true;
+//            case R.id.btnAyuda:
+//                Toast.makeText(this,"Ayuda", Toast.LENGTH_LONG).show();
+//                return true;
             case R.id.btnSalir:
-                 Toast.makeText(this,"Salir", Toast.LENGTH_LONG).show();
+                 //Toast.makeText(this,"Salir", Toast.LENGTH_LONG).show();
+                CloseSession();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
     }
 
-    public void navigationBarStatusBar() {
 
-        // Fix portrait issues
-        if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
-            // Fix issues for KitKat setting Status Bar color primary
-            if (Build.VERSION.SDK_INT >= 19) {
-                TypedValue typedValue19 = new TypedValue();
-                MainActivity.this.getTheme().resolveAttribute(R.attr.colorPrimary, typedValue19, true);
-                final int color = typedValue19.data;
-                FrameLayout statusBar = (FrameLayout) findViewById(R.id.statusBar);
-                statusBar.setBackgroundColor(color);
-            }
-
-            // Fix issues for Lollipop, setting Status Bar color primary dark
-            if (Build.VERSION.SDK_INT >= 21) {
-                TypedValue typedValue21 = new TypedValue();
-                MainActivity.this.getTheme().resolveAttribute(R.attr.colorPrimaryDark, typedValue21, true);
-                final int color = typedValue21.data;
-                FrameLayout statusBar = (FrameLayout) findViewById(R.id.statusBar);
-                statusBar.setBackgroundColor(color);
-            }
-        }
-
-
-        if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
-            if (Build.VERSION.SDK_INT >= 19) {
-                TypedValue typedValue19 = new TypedValue();
-                MainActivity.this.getTheme().resolveAttribute(R.attr.colorPrimary, typedValue19, true);
-                final int color = typedValue19.data;
-                FrameLayout statusBar = (FrameLayout) findViewById(R.id.statusBar);
-                statusBar.setBackgroundColor(color);
-            }
-            if (Build.VERSION.SDK_INT >= 21) {
-                TypedValue typedValue = new TypedValue();
-                MainActivity.this.getTheme().resolveAttribute(R.attr.colorPrimaryDark, typedValue, true);
-                final int color = typedValue.data;
-                FrameLayout statusBar = (FrameLayout) findViewById(R.id.statusBar);
-                statusBar.setBackgroundColor(color);
-            }
-        }
-    }
-
-
-    @Override
-    public void goToMain2() {
-        Intent intent = new Intent(MainActivity.this, Main2Activity.class);
-        startActivity(intent);
-        //this.finish();
-    }
 
     @Override
     public void onBackPressed() {
