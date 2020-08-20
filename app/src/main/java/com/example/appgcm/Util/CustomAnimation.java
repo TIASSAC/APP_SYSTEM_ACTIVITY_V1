@@ -7,4 +7,5 @@ public enum CustomAnimation {
     LEFT_RIGHT,
     IN_OUT,
     RIGTH_LEFT
+    /****/
 }
