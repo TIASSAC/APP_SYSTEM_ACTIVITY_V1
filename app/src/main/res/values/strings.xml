@@ -12,4 +12,6 @@
     <string name="password">Contraseña</string>
     <string name="entry">Ingresar</string>
     <string name="save_conf_title">Guardar</string>
+    <string name="permiso_fotos">Requerimos este permiso para seleccionar una foto de la galería y la cámara.</string>
+    <string name="permiso_documentos">Necesitamos este permiso para leer documentos desde el dispositivo.</string>
 </resources>

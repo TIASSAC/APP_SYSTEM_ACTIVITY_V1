@@ -17,7 +17,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.example.appgcm.Adapters.RVAdapterForActivity;
+import com.example.appgcm.AdjuntaArchivoActivity;
 import com.example.appgcm.Entities.ActivityEntity;
+import com.example.appgcm.Entities.ArchivoAdjuntoEntity;
 import com.example.appgcm.Entities.ConfigurationEntity;
 import com.example.appgcm.Entities.PersonEntity;
 import com.example.appgcm.Entities.RegistrationActivityEntity;
@@ -29,6 +31,7 @@ import com.example.appgcm.Util.Const;
 import com.example.appgcm.Util.CustomAnimation;
 import com.example.appgcm.Util.DatePickerFragment;
 import com.example.appgcm.Util.NavigationFragment;
+import com.example.appgcm.Util.OperacionesCache;
 import com.google.android.material.button.MaterialButton;
 
 import androidx.cardview.widget.CardView;
@@ -39,6 +42,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Handler;
 import android.text.InputFilter;
+import android.text.Layout;
 import android.text.Spanned;
 import android.util.Log;
 import android.view.DragEvent;
@@ -48,6 +52,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -64,6 +69,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+
 import static com.example.appgcm.Util.Const.GLOBAL_USER_ID_SESSION;
 
 
@@ -98,8 +104,9 @@ public class MainFragment extends Fragment {
     TextInputLayout LayoutComentariosMainFragment;
     TextInputEditText txtComentariosMainFragment;
     TextView txtUltimaMigracionMainFragment;
+    TextView txtDatosAdjuntos; //cantidad de archivos adjuntos
     List<ActivityEntity> activityEntities;
-
+    LinearLayout btnAdjuntarMainFragment;
     public MainFragment() {
         // Required empty public constructor
     }
@@ -147,6 +154,7 @@ public class MainFragment extends Fragment {
         txtNombreFechaMainFragment = (TextView)getActivity().findViewById(R.id.txtNombreFechaMainFragment);
 
         btnFechaMainFragment = (ImageView)getActivity().findViewById(R.id.btnFechaMainFragment);
+        btnAdjuntarMainFragment = (LinearLayout) getActivity().findViewById(R.id.btnAdjuntarMainFragment);//boton que adjunta los archivos
         LayoutComentariosMainFragment = (TextInputLayout)getActivity().findViewById(R.id.LayoutComentariosMainFragment);
         txtComentariosMainFragment = (TextInputEditText)getActivity().findViewById(R.id.txtComentariosMainFragment);
         txtUltimaMigracionMainFragment = (TextView)getActivity().findViewById(R.id.txtUltimaMigracionMainFragment);
@@ -156,6 +164,7 @@ public class MainFragment extends Fragment {
         rvListaActividadesMainFragment.setHasFixedSize(true);
         LinearLayoutManager llm = new LinearLayoutManager(getContext());
         rvListaActividadesMainFragment.setLayoutManager(llm);
+        txtDatosAdjuntos = (TextView)getActivity().findViewById(R.id.txtDatosAdjuntos);
 
         /**Para el nombre del día de la semana***/
         SimpleDateFormat sdf = new SimpleDateFormat("EEEE");
@@ -260,6 +269,14 @@ public class MainFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 showDatePicker();
+            }
+        });
+
+        btnAdjuntarMainFragment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intentAdjuntar = new Intent(getContext(), AdjuntaArchivoActivity.class);
+                startActivity(intentAdjuntar);
             }
         });
 
@@ -386,6 +403,18 @@ public class MainFragment extends Fragment {
         }
     };
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        OperacionesCache op = new OperacionesCache();
+        ArrayList<ArchivoAdjuntoEntity> listaArchivos = op.getListaAdjuntosCache("lista_adjuntos", getContext());
+        if(listaArchivos.size() > 0) {
+            txtDatosAdjuntos.setText("Adjuntar (" + listaArchivos.size() + ")");
+        }
+        else{
+            txtDatosAdjuntos.setText("Adjuntar");
+        }
+    }
 }
 
 

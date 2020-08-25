@@ -52,22 +52,25 @@
                     android:orientation="horizontal">
 
                     <LinearLayout
+                        android:id="@+id/btnAdjuntarMainFragment"
                         android:layout_width="0dp"
-                        android:layout_weight="1"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:gravity="center">
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
                         <ImageView
                             android:layout_width="32dp"
                             android:layout_height="32dp"
-                            android:id="@+id/btnAdjuntarMainFragment"
-                            android:src="@drawable/clip64">
-                        </ImageView>
+                            android:src="@drawable/clip64"></ImageView>
+
                         <TextView
+                            android:id="@+id/txtDatosAdjuntos"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textSize="14sp"
-                            android:text="Adjunto"></TextView>
+                            android:text="Adjunto"
+                            android:gravity="center"
+                            android:textSize="14sp"></TextView>
                     </LinearLayout>
                     <LinearLayout
                         android:layout_width="0dp"
